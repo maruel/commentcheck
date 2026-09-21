@@ -1,0 +1,8 @@
+# golangci-lint custom binary build config: commentcheck and methodfilecheck
+# module plugins.
+version: "2"
+plugins:
+  - module: github.com/maruel/commentcheck
+    path: .
+  - module: github.com/maruel/methodfilecheck
+    version: v0.1.1
