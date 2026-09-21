@@ -43,7 +43,7 @@ version: "2"
 plugins:
   - module: github.com/maruel/commentcheck
     import: github.com/maruel/commentcheck
-    path: ../commentcheck # or a published version: version: v0.1.0
+    version: v0.1.0
 ```
 
 ```yaml
