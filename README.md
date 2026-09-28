@@ -34,39 +34,12 @@ commentcheck -fix ./...
 ## golangci-lint
 
 The package ships a [golangci-lint module
-plugin](https://golangci-lint.run/docs/plugins/module-plugins/). Build the
-custom linter binary and run it instead of `golangci-lint`:
-
-```bash
-# .custom-gcl.yml, next to .golangci.yml
-version: "2"
-plugins:
-  - module: github.com/maruel/commentcheck
-    import: github.com/maruel/commentcheck
-    version: v0.1.0
-```
-
-```yaml
-# .golangci.yml
-version: "2"
-linters:
-  enable:
-    - commentcheck
-  settings:
-    custom:
-      commentcheck:
-        type: module
-        description: Exported declarations need doc comments starting with their name; doc comments must attach to their declaration.
-        settings: {}
-```
-
-```bash
-golangci-lint custom --version v2.13.2
-./custom-gcl run ./...
-```
+plugin](https://golangci-lint.run/docs/plugins/module-plugins/). The checked-in
+[plugin config](.custom-gcl.yml) and [linter config](.golangci.yml) are the
+current examples. Run `make custom-gcl && ./custom-gcl run ./...` here.
 
 The plugin carries suggested fixes for detached comments, so
-`golangci-lint run --fix` reorders the comments automatically.
+`./custom-gcl run --fix` reorders the comments automatically.
 
 ## License
 
