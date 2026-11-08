@@ -7,6 +7,7 @@
 package commentcheck
 
 import (
+	"maps"
 	"os"
 	"path/filepath"
 	"slices"
@@ -21,9 +22,7 @@ func writeModule(t *testing.T, files map[string]string) Package {
 	dir := t.TempDir()
 	t.Chdir(dir)
 	all := map[string]string{"go.mod": "module p\n\ngo 1.27\n"}
-	for name, src := range files {
-		all[name] = src
-	}
+	maps.Copy(all, files)
 	for name, src := range all {
 		path := filepath.Join(dir, name)
 		if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
